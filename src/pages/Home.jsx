@@ -18,14 +18,14 @@ function home() {
             <button className='btn btn-warning'>Start to Explore <i class='fa-solid fa-right-long fa-beat ms-2'></i></button>
           </Col>
           <Col sm={12} md={6}>
-            <img style={{marginTop:'100px'}} className='w-75' src={titleImage} alt="" />
+            <img style={{marginTop:'100px'}} className='w-100' src={titleImage} alt="" />
           </Col>
         </Row>
       </div>
       <div className='all-projects mt-5'>
         <h1 className='text-center mb-5'>Explore Our Projects</h1>
-        <marquee scrollAmount={25}>
-          <Row className='mb-5'>
+        <marquee scrollAmount={20}>
+          <Row>
             <Col sm={12} md={6} lg={4}>
               <ProjectCards />
             </Col>
@@ -37,7 +37,7 @@ function home() {
             </Col>
           </Row>
         </marquee>
-        <div className='text-center mt-5'> <Link to={'/projects'}>View More Projects</Link></div>
+        <div className='text-center'> <Link to={'/projects'}>View More Projects</Link></div>
       </div>
     </>
   )
