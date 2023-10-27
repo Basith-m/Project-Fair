@@ -1,14 +1,13 @@
 import React from 'react'
-import { ImStackoverflow } from 'react-icons/im'
 import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-      <div style={{width:'100%', backgroundColor:'#99ee90'}} className='text-white bg-black container-fluid rounded mt-5'>
+      <div style={{width:'100%', backgroundColor:'#99ee90'}} className='text-white bg-black container-fluid mt-5'>
         <div style={{width:'100%',height:'300px', backgroundColor:''}} className='d-flex flex-column justify-content-center align-items-center  mt-5'>
         <div className="footer-div d-flex justify-content-evenly w-100 flex-wrap">
           <div className="website" style={{width:'400px'}}>
-            <h4 className='mb-3'> <ImStackoverflow />{' '}
+            <h4 className='mb-3'>
             Project-Fair</h4>
             <h6>Designed and built with all the love in the world by the Luminar team with the help of our contributors.</h6>
             <h6 className='mb-3'>Code Licensed Luminar , docs CCBY 3.0</h6>
@@ -30,7 +29,7 @@ function Footer() {
             <h4>Contact Us</h4>
             <div className="sub d-flex">
               <input type="text" className='form-control' placeholder='Enter your Email Id' />
-              <button className='btn btn-warning ms-2'><i class="fa-solid fa-arrow-right d-flex align-items-center p-1 justify-content-center"></i></button>
+              <button className='btn btn-primary ms-2'><i class="fa-solid fa-arrow-right d-flex align-items-center p-1 justify-content-center"></i></button>
             </div>
             <div className="icons fs-4 d-flex justify-content-evenly mt-3">
             <Link to={'https://mail.google.com/'} style={{textDecoration:'none', color:'white'}}><i class="fa-solid fa-envelope"></i></Link>

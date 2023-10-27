@@ -14,7 +14,7 @@ function ProjectCards() {
         <Card className='shadow mb-5 btn' onClick={handleShow}>
         <Card.Img variant="top" src={projectPic} />
         <Card.Body>
-            <Card.Title>Project Title</Card.Title>
+            <Card.Title>Media Player</Card.Title>
         </Card.Body>
         </Card>
 
@@ -28,7 +28,7 @@ function ProjectCards() {
                     <img style={{height:'200px'}} src={projectPic} alt="" />
                 </Col>
                 <Col md={6}>
-                    <h2>Video App</h2>
+                    <h2>Media Player</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem molestias dolorum odio dignissimos magnam culpa facilis, repudiandae incidunt dolores minima ad perspiciatis nesciunt sapiente commodi esse suscipit fugiat voluptatibus autem</p>
                     <p>Languages Used : <span className='fw-bold'>HTML,CSS,BOOTSTRAP,REACT</span></p>
                 </Col>
