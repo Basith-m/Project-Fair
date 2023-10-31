@@ -44,7 +44,7 @@ function Auth({register}) {
                                     isRegisterForm ? 
                                     <div>
                                         <button className='btn btn-light mb-2'>Register</button>
-                                        <p>Already have Account? Click here to <Link to={'/login'}>Login</Link></p>
+                                        <p>Already have Account? Click here to <Link to={'/login'} className='text-primary'>Login</Link></p>
                                     </div> :
                                     <div>
                                     <button className='btn btn-light mb-2'>Login</button>

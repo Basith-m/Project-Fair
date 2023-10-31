@@ -1,26 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Navbar,  Container } from 'react-bootstrap'
+import { Navbar, Container } from 'react-bootstrap'
 
-function Header() {
+function Header({ insideDashboard }) {
   return (
-    // <div style={{backgroundColor:'#99ee90'}} className='position-fixed z-1 top-0 w-100'>
-    //     <div className='container my-3'>
-    //         <Link to={'/'} style={{textDecoration:'none'}} className='d-flex align-items-center text-white fs-3 fw-bolder'>
-    //           <i class="fa-brands fa-stack-overflow me-2"></i>Project Fair
-    //         </Link>
-    //     </div>
-    // </div>
-
-    <Navbar expand="lg" style={{backgroundColor:'#99ee90'}} className='p-3'>
+    <Navbar expand="lg" style={{ backgroundColor: '#99ee90' }} className='position-fixed z-1 top-0 w-100 p-3'>
       <Container>
-        <Link to={'/'} style={{textDecoration:'none'}}>
-          <Navbar.Brand className='text-white fs-3 fw-bold'>
+        <Navbar.Brand className='text-white fs-3 fw-bold'>
+          <Link to={'/'} style={{ textDecoration: 'none', color: 'white' }} >
             <i class="fa-brands fa-stack-overflow fa-bounce me-2"></i>Project Fair
-          </Navbar.Brand>
-        </Link>
+          </Link>
+        </Navbar.Brand>
+        {
+          insideDashboard &&
+          <button style={{textDecoration:'none'}} className='btn btn-link text-info fs-5 fw-bold text-capitalize'>
+            Logout <i class="fa-solid fa-arrow-right-from-bracket fa-beat-fade ms-2"></i>
+          </button>
+        }
+
       </Container>
-    </Navbar>
+    </Navbar >
   )
 }
 

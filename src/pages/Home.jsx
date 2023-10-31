@@ -24,7 +24,7 @@ function home() {
       </div>
       <div className='all-projects mt-5'>
         <h1 className='text-center mb-5'>Explore Our Projects</h1>
-          <Row className='p-4'>
+          <Row className='p-4 d-flex justify-content-center align-items-center'>
             <Col sm={12} md={6} lg={4}>
               <ProjectCards />
             </Col>
