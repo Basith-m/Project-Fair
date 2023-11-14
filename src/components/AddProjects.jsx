@@ -18,9 +18,10 @@ function AddProjects() {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        size='lg'
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Project Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <div className="row">
@@ -28,8 +29,7 @@ function AddProjects() {
                 <label>
                   <input style={{ display: "none" }} type="file" />
                   <img
-                    height={'300px'}
-                    width={'300px'}
+                    width={'100%'}
                     className="img-fluid"
                     src="https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png"
                     alt=""

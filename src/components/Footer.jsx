@@ -8,7 +8,9 @@ function Footer() {
         <div className="footer-div d-flex justify-content-evenly w-100 flex-wrap">
           <div className="website" style={{width:'400px'}}>
             <h4 className='mb-3'>
-            Project-Fair</h4>
+            <Link to={'/'} style={{ textDecoration: 'none', color: 'white' }} >
+            <i class="fa-brands fa-stack-overflow me-2"></i>Project Fair
+          </Link></h4>
             <h6>Designed and built with all the love in the world by the Luminar team with the help of our contributors.</h6>
             <h6 className='mb-3'>Code Licensed Luminar , docs CCBY 3.0</h6>
             <p className='text-secondary'>Currently v1.0.0.</p>
