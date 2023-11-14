@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap'
 import loginImg from '../Assets/login-img.jpg'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { registerAPI } from '../Services/allAPI';
+import { loginAPI, registerAPI } from '../Services/allAPI';
 
 function Auth({register}) {
 
@@ -39,6 +39,32 @@ function Auth({register}) {
             }
         }
     }
+
+    const handleLogin = async(e) => {
+        const {email, password} = userData
+        e.preventDefault()
+        if(!email || !password){
+            toast.info("Please fill the form completely")
+        }
+        else{
+            const result = await loginAPI(userData)
+            if(result.status === 200){
+                sessionStorage.setItem("existingUser",JSON.stringify(result.data.existingUser))
+                sessionStorage.setItem("token",JSON.stringify(result.data.token))
+                setUserData({
+                    email:"",
+                    password:""
+                })
+                navigate('/')
+            }
+            else{
+                toast.warning(result.response.data)
+                console.log(result);
+            }
+        }
+    }
+
+
   return (
     <div style={{width:'100',height:'100vh'}} className='d-flex justify-content-center align-items-center'>
         <div className='w-75 container'>
@@ -81,7 +107,7 @@ function Auth({register}) {
                                         <p>Already have Account? Click here to <Link to={'/login'} className='text-primary'>Login</Link></p>
                                     </div> :
                                     <div>
-                                    <button className='btn btn-light mb-2'>Login</button>
+                                    <button className='btn btn-light mb-2' onClick={handleLogin}>Login</button>
                                     <p>New User? Click here to <Link to={'/register'} className='text-primary'>Register</Link></p>
                                 </div>
                                 }
