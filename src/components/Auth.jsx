@@ -50,7 +50,7 @@ function Auth({register}) {
             const result = await loginAPI(userData)
             if(result.status === 200){
                 sessionStorage.setItem("existingUser",JSON.stringify(result.data.existingUser))
-                sessionStorage.setItem("token",JSON.stringify(result.data.token))
+                sessionStorage.setItem("token",result.data.token)
                 setUserData({
                     email:"",
                     password:""

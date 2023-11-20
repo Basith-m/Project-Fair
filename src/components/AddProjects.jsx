@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { useState } from 'react';
-import { ToastContainer, Toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addProjectAPI } from '../Services/allAPI';
 
@@ -26,43 +26,45 @@ function AddProjects() {
   }, [projectDetails.projectImage])
 
   useEffect(() => {
-    if(sessionStorage.getItem("token")){
+    if (sessionStorage.getItem("token")) {
       setToken(sessionStorage.getItem("token"))
     }
-    else{
+    else {
       setToken("")
     }
-  },[])
+  }, [])
 
 
-  const handleAdd = async(e) =>{
+  const handleAdd = async (e) => {
     e.preventDefault()
-    const {title,languages,overview,github,website,projectImage} = projectDetails
-    if(!title || !languages || !overview || !github || !website || !projectImage){
-      Toast.info("Please fill the form completely")
+    const { title, languages, overview, github, website, projectImage } = projectDetails
+    if (!title || !languages || !overview || !github || !website || !projectImage) {
+      alert("Please fill the form completely")
     }
-    else{
+    else {
       const reqBody = new FormData()
-      reqBody.append("title",title)
-      reqBody.append("languages",languages)
-      reqBody.append("overview",overview)
-      reqBody.append("github",github)
-      reqBody.append("website",website)
-      reqBody.append("projectImage",projectImage)
+      reqBody.append("title", title)
+      reqBody.append("languages", languages)
+      reqBody.append("overview", overview)
+      reqBody.append("github", github)
+      reqBody.append("website", website)
+      reqBody.append("projectImage", projectImage)
 
-      if(token){
-        reqHeader = {
+      if (token) {
+        const reqHeader = {
           "Content-type": "multipart/form-data",
-          "Authorization" : `Bearer ${token}`
+          "Authorization": `Bearer ${token}`
         }
-      }
-
-      const result = await addProjectAPI(reqBody,reqHeader)
-      if(result.status===200){
-        console.log(result.data);
-      }
-      else{
-
+        const result = await addProjectAPI(reqBody, reqHeader)
+        if (result.status === 200) {
+          console.log(result.data);
+          handleClose()
+          alert("Project added")
+        }
+        else {
+          console.log(result);
+          toast.warning(result.response.data);
+        }
       }
     }
   }
@@ -170,8 +172,8 @@ function AddProjects() {
         </Modal.Footer>
       </Modal>
       <ToastContainer
-            position="top-center"
-            theme="colored"
+        position="top-center"
+        theme="colored"
       />
     </>
   )
