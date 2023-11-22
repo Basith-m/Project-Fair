@@ -3,19 +3,33 @@ import { Row, Col } from 'react-bootstrap'
 import titleImage from "../Assets/landing-image-project.png"
 import ProjectCards from '../components/ProjectCards'
 import { Link } from 'react-router-dom'
+import { homeProjectAPI } from '../Services/allAPI'
 
 function Home() {
 
   const [loggedIn, setLoggedIn] = useState(false)
+  const [homeProjects, setHomeProjects] = useState([])
+
+  const getHomeProjects = async () => {
+    const result = await homeProjectAPI()
+    if (result.status === 200) {
+      setHomeProjects(result.data)
+    }
+    else {
+      console.log(result);
+      console.log(result.response.data);
+    }
+  }
 
   useEffect(() => {
-    if(sessionStorage.getItem("token")){
+    if (sessionStorage.getItem("token")) {
       setLoggedIn(true)
     }
-    else{
+    else {
       setLoggedIn(false)
     }
-  },[])
+    getHomeProjects()
+  }, [])
 
   return (
     <>
@@ -41,11 +55,17 @@ function Home() {
       </div>
       <div className='all-projects mt-5'>
         <h1 className='text-center mb-5'>Explore Our Projects</h1>
-        <Row className='p-4 d-flex justify-content-center align-items-center'>
-          <Col sm={12} md={6} lg={4}>
-            <ProjectCards />
-          </Col>
-        </Row>
+        <marquee scrollAmount={18}>
+          <Row className='d-flex justify-content-between'>
+            {
+              homeProjects?homeProjects.map(project => (
+                <Col sm={12} md={6} lg={4}>
+                  <ProjectCards project={project} />
+                </Col>
+              )) : null
+            }
+          </Row>
+        </marquee>
         <div className='text-center'> <Link to={'/projects'}>View More Projects</Link></div>
       </div>
     </>

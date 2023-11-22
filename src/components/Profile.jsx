@@ -8,7 +8,7 @@ function Profile() {
     const [open, setOpen] = useState(false);
 
   return (
-    <div className='p-2 shadow mt-5 rounded'>
+    <div className='p-2 border border-1 mt-5 rounded'>
         <div className='d-flex  p-2 rounded justify-content-between align-items-center'>
             <h2>My Profile</h2>
             <button onClick={() => setOpen(!open)} className='btn btn-outline-info d-flex align-items-center'>
