@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addProjectAPI } from '../Services/allAPI';
+import { addProjectResponseContext } from '../Context/ContextShare';
 
 function AddProjects() {
+  const { addProjectResponse, setAddProjectResponse } = useContext(addProjectResponseContext)
   const [show, setShow] = useState(false);
   const [preview, ssetPreview] = useState("")
   const [token, setToken] = useState("")
@@ -39,7 +41,7 @@ function AddProjects() {
     e.preventDefault()
     const { title, languages, overview, github, website, projectImage } = projectDetails
     if (!title || !languages || !overview || !github || !website || !projectImage) {
-      alert("Please fill the form completely")
+      toast.info("Please fill the form completely")
     }
     else {
       const reqBody = new FormData()
@@ -59,7 +61,7 @@ function AddProjects() {
         if (result.status === 200) {
           console.log(result.data);
           handleClose()
-          alert("Project added")
+          setAddProjectResponse(result.data)
         }
         else {
           console.log(result);

@@ -97,7 +97,7 @@ function Auth({register}) {
                                 </Form.Group>
     
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Control type="email" placeholder="Enter Password" value={userData.password} onChange={e=>{setUserData({...userData,password:e.target.value})}} />
+                                    <Form.Control type="password" placeholder="Enter Password" value={userData.password} onChange={e=>{setUserData({...userData,password:e.target.value})}} />
                                 </Form.Group>
                             
                                 {
