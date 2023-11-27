@@ -7,6 +7,14 @@ function Profile() {
 
     const [open, setOpen] = useState(false);
 
+    const [userProfile,setUserProfile] = useState({
+        username:"", 
+        email:"", 
+        password:"",
+        github : "",
+        linkedIn : ""
+    })
+
   return (
     <div className='p-2 border border-1 mt-5 rounded'>
         <div className='d-flex  p-2 rounded justify-content-between align-items-center'>
