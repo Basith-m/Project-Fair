@@ -1,4 +1,4 @@
-import { Route,Routes } from 'react-router-dom';
+import { Navigate, Route,Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from './pages/Dashboard';
 import Footer from './components/Footer';
@@ -11,7 +11,6 @@ import { tokenAuthorisationContext } from './Context/TokenAuth';
 function App() {
 
   const {isAuthorized, setIsAuthorized} = useContext(tokenAuthorisationContext)
-
   return (
     <div className="App">
       <Routes>
@@ -20,7 +19,7 @@ function App() {
         <Route path='/register' element={<Auth register />} />
         <Route path='/dashboard' element={isAuthorized ? <Dashboard /> : <Home />} />
         <Route path='/projects' element={isAuthorized ? <Projects /> : <Home />} />
-        <Route />
+        <Route path='/*' element={<Navigate to={'/'} />} />
       </Routes>
       <Footer />
     </div>
