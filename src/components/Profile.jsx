@@ -18,7 +18,7 @@ function Profile() {
         password: "",
         profile: "",
         github: "",
-        linkedIn: ""
+        linkedin: ""
     })
 
     const [existingImage, setExistingImage] = useState("")
@@ -26,7 +26,7 @@ function Profile() {
 
     useEffect(() => {
         const user = JSON.parse(sessionStorage.getItem("existingUser"))
-        setUserProfile({ ...userProfile, username: user.username, email: user.email, password: user.password, profile: "", github: user.github, linkedIn: user.linkedIn })
+        setUserProfile({ ...userProfile, username: user.username, email: user.email, password: user.password, profile: "", github: user.github, linkedin: user.linkedin })
         setExistingImage(user.profile)
     }, [open])
 
@@ -41,8 +41,8 @@ function Profile() {
 
 
     const handleProfileUpdate = async () => {
-        const { username, email, password, profile, github, linkedIn } = userProfile
-        if (!github || !linkedIn) {
+        const { username, email, password, profile, github, linkedin } = userProfile
+        if (!github || !linkedin) {
             toast.info("Please fill the form completely")
         }
         else {
@@ -51,7 +51,7 @@ function Profile() {
             reqBody.append("email", email)
             reqBody.append("password", password)
             reqBody.append("github", github)
-            reqBody.append("linkedIn", linkedIn)
+            reqBody.append("linkedin", linkedin)
             preview ? reqBody.append("profileImage", profile) : reqBody.append("profileImage", existingImage)
 
             const token = sessionStorage.getItem("token")
@@ -64,7 +64,7 @@ function Profile() {
 
                 // api call
                 const res = await editUserAPI(reqBody, reqHeader)
-                if (res.staus === 200) {
+                if (res.status===200) {
                     setOpen(!open)
                     sessionStorage.setItem("existingUser", JSON.stringify(res.data))
                 } else {
@@ -81,7 +81,7 @@ function Profile() {
 
                 // api call
                 const res = await editUserAPI(reqBody, reqHeader)
-                if (res.staus === 200) {
+                if (res.status===200) {
                     setOpen(!open)
                     sessionStorage.setItem("existingUser", JSON.stringify(res.data))
                 } else {
@@ -118,10 +118,10 @@ function Profile() {
                         <input type="text" className='form-control' placeholder='GitHub' value={userProfile.github} onChange={e => setUserProfile({ ...userProfile, github: e.target.value })} />
                     </div>
                     <div className='mt-3'>
-                        <input type="text" className='form-control' placeholder='LinkedIn' value={userProfile.linkedIn} onChange={e => setUserProfile({ ...userProfile, linkedIn: e.target.value })} />
+                        <input type="text" className='form-control' placeholder='LinkedIn' value={userProfile.linkedin}  onChange={e => setUserProfile({...userProfile, linkedin: e.target.value})} />
                     </div>
                     <div className='mt-3'>
-                        <button style={{ fontSize: '16px' }} className='btn btn-warning  p-2  w-100' onClick={handleProfileUpdate}>Upload</button>
+                        <button style={{ fontSize: '16px' }} className='btn btn-warning  p-2  w-100' onClick={handleProfileUpdate}>Update</button>
                     </div>
                 </div>
             </Collapse>
